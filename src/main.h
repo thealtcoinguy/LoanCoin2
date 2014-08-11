@@ -27,7 +27,7 @@ class CInv;
 class CRequestTracker;
 class CNode;
 
-static const int LAST_POW_BLOCK = 10; // at 60 second blocks will be about 30 days from launch 43200
+static const int LAST_POW_BLOCK = 1000; // at 60 second blocks will be about 30 days from launch 43200
 
 static const unsigned int MAX_BLOCK_SIZE = 1000000;
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;

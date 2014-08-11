@@ -971,13 +971,20 @@ uint256 WantedByOrphan(const CBlock* pblockOrphan)
 // miner's coin base reward
 int64_t GetProofOfWorkReward(int64_t nFees)
 {
-
-        int64_t nSubsidy = 1000000 * COIN;
+    if (pindexBest->nHeight == 1)
+      {
+        int64_t nSubsidy = 10000000  * COIN;
         if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfWorkReward() : create=%s nSubsidy=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nSubsidy);
         return nSubsidy + nFees;
+      } else
+      {
+        int64_t nSubsidy = 1 * COIN;
+        if (fDebug && GetBoolArg("-printcreation"))
+        printf("GetProofOfWorkReward() : create=%s nSubsidy=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nSubsidy);
+        return nSubsidy + nFees;
+      }
 }
-
 const int DAILY_BLOCKCOUNT =  14400;
 // miner's coin stake reward based on coin age spent (coin-days)
 int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
